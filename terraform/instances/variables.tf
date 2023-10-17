@@ -16,6 +16,6 @@ variable "security_group_ids" {}
 
 variable "number_of_vms" {
   description = "Number of ec2 instances"
-  type        = integer
+  type        = number
   default     = 2
 }

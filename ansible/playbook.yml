@@ -26,7 +26,7 @@
 
     - name: Install python/pip 
       apt:
-        name: ['python-pip','python-dev','build-essential','python3-pip']
+        name: ['python-dev','build-essential','python3-pip']
         state: present
         update_cache: yes
 
@@ -40,11 +40,20 @@
         name: parity/polkadot:{{ version }}
         source: pull
 
+    - name: Check if the container exists
+      command: docker ps -a --format "{{ .Names }}" | grep polkadot-app-container
+      register: container_check
+      ignore_errors: yes
+
     - name: Run Polkadot Docker Image
-      command: docker run -d -p 9944:9944 -p 9933:9933 -p 9615:9615 --name node-app-container parity/polkadot:{{ version }}
+      command: docker run -d -p 9944:9944 -p 9933:9933 -p 9615:9615 --name polkadot-app-container parity/polkadot:{{ version }}
+      when: container_check.rc != 0
+
+    - name: Wait for Docker to Start
+      command: sleep 10
     
     - name: Verify docker container version
-      shell: docker exec polkadot-container polkadot --version
+      shell: docker exec polkadot-app-container polkadot --version
       register: shell_result
 
     - name: Print Version

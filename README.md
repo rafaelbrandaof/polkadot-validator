@@ -18,8 +18,8 @@ provissioning
     * [Terraform](https://www.terraform.io/)
     * [Terraform Inventory](https://github.com/adammck/terraform-inventory)
     * [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-    * Ensure you add the key pair from aws to `~/.ssh/` folder.
-    * Ensure SSH agent has the AWS private key added  `ssh-add <path_to_key_file>`
+    * Ensure you add the key pair from aws to `~/.ssh/key.pem`.
+    * Ensure SSH agent has the AWS private key added  `ssh-add ~/.ssh/key.pem`
  
 ```
 Terraform v1.6.1

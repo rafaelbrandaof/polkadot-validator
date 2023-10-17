@@ -8,7 +8,7 @@ provider "aws" {
 # Create a vpc network
 module "network" {
   source          = "./network"
-  name            = "qrious"
+  name            = "polkadot-network"
   cidr            = "172.22.0.0/16"
   public_subnets  = ["172.22.253.0/24", "172.22.254.0/24"]
   private_subnets = ["172.22.10.0/24", "172.22.11.0/24"]
@@ -28,5 +28,5 @@ module "instances" {
   public_subnets_ids  = "${module.network.public_subnets_ids}"
   polkadot_instance_type = "t2.micro"
   number_of_vms       = 2
-  ubuntu_ami          = "ami-0f65671a86f061fcd"
+  ubuntu_ami          = "ami-0430580de6244e02e"
 }

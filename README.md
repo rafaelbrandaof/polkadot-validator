@@ -14,7 +14,6 @@ This repository sets up:
 
 ## Prerequisites
 - Install the following locally:
-provissioning
     * [Terraform](https://www.terraform.io/)
     * [Terraform Inventory](https://github.com/adammck/terraform-inventory)
     * [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
@@ -100,6 +99,8 @@ region = "us-east-2"
 aws_key_path = "<path_to_key>"
 aws_key_name = "<key_name>"
 ```
+
+To change polkadot version, please change the file under `ansible/group_vars/polkadot.yml`. 
 
 ## Risks
 
